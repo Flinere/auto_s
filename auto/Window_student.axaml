@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="auto.Window_student"
+        Title="Window_student" Background="White">
+        <TabControl  TabStripPlacement="Left">
+            <TabControl.Styles>
+                <Style Selector="TabItem">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="#CCC"/>
+                    <Setter Property="Margin" Value="0,0,0,2"/>
+                </Style>
+                
+                <Style Selector="TabItem:selected">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="CornflowerBlue"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </TabControl.Styles>
+            <TabItem Header="Профиль" >
+                <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" ShowGridLines="True">
+                    <WrapPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock  Text="Почта:" Foreground="CornflowerBlue" ></TextBlock>
+                    <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Login"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock  Text="Имя:" Foreground="CornflowerBlue" ></TextBlock>
+                        <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="First_nam"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock  Text="Фамилия:" Foreground="CornflowerBlue" ></TextBlock>
+                        <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Last_name"></TextBlock>
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Занятия">
+                <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*" ShowGridLines="True">
+                    <ListBox Grid.Row="1" Grid.Column="1" Name="Listes">
+                    </ListBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+</Window>
