@@ -4,8 +4,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="auto.Window_Admin"
-        Title="Window_Admin">
-    <Grid RowDefinitions="*,*,*,*,*">
-        <TextBlock Grid.Row="2" Text="Вы админ" HorizontalAlignment="Center"></TextBlock>
+        Title="Window_Admin" 
+        xmlns:models="clr-namespace:ClassLibrary2.Models;assembly=ClassLibrary2"
+        Background="White"
+        >
+    <Grid RowDefinitions="*,*" ColumnDefinitions="*,*" >
+       <Button Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Выйти" Background="CornflowerBlue" Foreground="White" Click="Button_OnClick"></Button>
+        <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Обновить" Background="CornflowerBlue" Foreground="White" Click="Refresh"></Button>
+
+        <WrapPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="Уроки" Foreground="CornflowerBlue" Margin="0,5,10,0"></TextBlock>
+            <Button Content="Создать" Background="CornflowerBlue" Foreground="White" Margin="0,0,10,0" Click="Button_OnClick1"></Button>
+            <Button Content="Удалить" Background="CornflowerBlue" Foreground="White" Click="Button_OnClick2"></Button>
+        </WrapPanel>
+        <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="студенты" Foreground="CornflowerBlue" Margin="0,5,10,0"></TextBlock>
+            <Button Content="Создать" Background="CornflowerBlue" Foreground="White" Margin="0,0,10,0" Click="Button_OnClick3"></Button>
+            <Button Content="Удалить" Background="CornflowerBlue" Foreground="White" Click="Button_OnClick4"></Button>
+        </WrapPanel>
+        
+        <ListBox Grid.Column="0" Grid.Row="1" Background="White" BorderBrush="CornflowerBlue" BorderThickness="1" Name="Lisen">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:Schedule">
+                    <WrapPanel Orientation="Horizontal">
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding ScheduledDate}" Width="200" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding GroupId}" Width="70" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding Car.LicensePlate}" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding Status}" Width="100" Margin="0,0,10,0"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox Grid.Row="1" Grid.Column="1" Background="White" BorderBrush="CornflowerBlue" BorderThickness="1" Name="Studs">
+            <ListBox.DataTemplates>
+                <DataTemplate x:DataType="models:Student">
+                    <WrapPanel Orientation="Horizontal">
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding FirstName}" Width="70" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding  LastName}" Width="70" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding   GroupDisplayNames}" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding  Phone}" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock Foreground="CornflowerBlue" Text="{Binding  RegistrationDate}" Width="100" Margin="0,0,10,0"></TextBlock>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.DataTemplates>
+        </ListBox>
     </Grid>
 </Window>

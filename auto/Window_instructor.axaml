@@ -4,8 +4,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="auto.Window_instructor"
-        Title="Window_instructor">
-        <Grid RowDefinitions="*,*,*,*,*">
-                <TextBlock Grid.Row="2" Text="Вы инструктор" HorizontalAlignment="Center"></TextBlock>
-        </Grid>
+        Title="Window_instructor" xmlns:models="clr-namespace:ClassLibrary2.Models;assembly=ClassLibrary2"
+        FontSize="20" Background="White">
+         <TabControl  TabStripPlacement="Left">
+            <TabControl.Styles>
+                <Style Selector="TabItem">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="#CCC"/>
+                    <Setter Property="Margin" Value="0,0,0,2"/>
+                </Style>
+                
+                <Style Selector="TabItem:selected">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="CornflowerBlue"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </TabControl.Styles>
+            <TabItem Header="Профиль" >
+                <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" ShowGridLines="True">
+                    <WrapPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock  Text="Почта:" Foreground="CornflowerBlue" ></TextBlock>
+                    <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Login"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock  Text="Имя:" Foreground="CornflowerBlue" ></TextBlock>
+                        <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="First_nam"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock  Text="Фамилия:" Foreground="CornflowerBlue" ></TextBlock>
+                        <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Last_name"></TextBlock>
+                    </WrapPanel>
+                    <Button Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Background="CornflowerBlue" Width="70" Height="30" Content="Выход" FontSize="16" Foreground="White" Click="Button_OnClick"></Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Занятия">
+                <StackPanel Margin="10">
+                    <StackPanel Orientation="Horizontal" Background="White" Margin="0,0,10,0">
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Дата" Width="200" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Группа" Width="70" Margin="0,0,10,0"> </TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Машина" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Время урока" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Статус" Width="100" Margin="0,0,10,0"></TextBlock>
+                    </StackPanel>
+                <ListBox Name="Listes" Background="White">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Schedule">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding ScheduledDate}" Width="200" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding GroupId}" Width="70" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Car.LicensePlate}" Width="100" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="100" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Status}" Width="100" Margin="0,0,10,0"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    </StackPanel>
+            </TabItem>
+        </TabControl>
 </Window>

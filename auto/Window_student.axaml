@@ -4,7 +4,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="auto.Window_student"
-        Title="Window_student" Background="White">
+        Title="Window_student" Background="White"
+        xmlns:models="clr-namespace:ClassLibrary2.Models;assembly=ClassLibrary2"
+        FontSize="20">
         <TabControl  TabStripPlacement="Left">
             <TabControl.Styles>
                 <Style Selector="TabItem">
@@ -34,13 +36,38 @@
                         <TextBlock  Text="Фамилия:" Foreground="CornflowerBlue" ></TextBlock>
                         <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Last_name"></TextBlock>
                     </WrapPanel>
+                    <WrapPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock  Text="Группа:" Foreground="CornflowerBlue" ></TextBlock>
+                        <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Grups"></TextBlock>
+                    </WrapPanel>
+                    <Button Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Background="CornflowerBlue" Width="70" Height="30" Content="Выход" FontSize="16" Foreground="White" Click="Button_OnClick"></Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Занятия">
-                <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*,*" ShowGridLines="True">
-                    <ListBox Grid.Row="1" Grid.Column="1" Name="Listes">
+                <StackPanel Margin="10">
+                    <StackPanel Orientation="Horizontal" Background="White" Margin="0,0,10,0">
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Дата" Width="200" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Имя инструктора" Width="180" Margin="0,0,10,0"> </TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Время" Width="70" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Тип урока" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Статус" Width="100" Margin="0,0,10,0"></TextBlock>
+                    </StackPanel>
+                    
+                    <ListBox Name="Listes" Background="White">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Lesson">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding LessonDate}" Width="200" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Instructor.FirstName}" Width="180" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="70" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding LessonType}" Width="100" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Status}" Width="100" Margin="0,0,10,0"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
-                </Grid>
+                </StackPanel>
             </TabItem>
+            
         </TabControl>
 </Window>

@@ -27,7 +27,7 @@
 
     <ItemGroup>
       <Reference Include="ClassLibrary2">
-        <HintPath>..\..\ClassLibrary2\ClassLibrary2\bin\Debug\net9.0\ClassLibrary2.dll</HintPath>
+        <HintPath>..\..\ClassLibrary2\ClassLibrary2\bin\Main\net9.0\ClassLibrary2.dll</HintPath>
       </Reference>
     </ItemGroup>
 </Project>

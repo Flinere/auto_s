@@ -7,43 +7,65 @@ using ClassLibrary2.Context;
 using ClassLibrary2.Models;
 using ClassLibrary2.Services;
 using System.Threading.Tasks;
+using Avalonia.Interactivity;
 using ClassLibrary2.Services.Implementations;
 using ClassLibrary2.Services.interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace auto;
 
 public partial class Window_student : Window
 {
     private readonly StudentService  _studentService;
+    private readonly LessonService _lessonService;
+    private readonly int pers;
     
     public Window_student()
     {
         InitializeComponent();
     }
 
-    public Window_student(int pers)
+    public Window_student(int pers, StudentService studentService, LessonService lessonService)
     {
-        var db = new PostgresContext();
-        _studentService = new StudentService(db);
+       
         InitializeComponent();
+        _studentService = studentService;
+        _lessonService = lessonService;
         Frontwins(pers);
         List_es(pers);
         
     }
 
-    public void Frontwins(int people)
+    public async Task Frontwins(int people)
     {
-        var db = new PostgresContext();
-        var info_pers = db.Students.FirstOrDefault(s => s.StudentId == people);
+        var info_pers = await _studentService.GetByIdAsync(people);
         First_nam.Text = info_pers.FirstName;
         Login.Text = info_pers.Email;
         Last_name.Text = info_pers.LastName;
-        
+        Grups.Text = info_pers.Groups.FirstOrDefault().GroupName;
+
     }
 
     public async Task List_es(int people)
     {
-        var studens = await _studentService.GetByIdAsync(people);
-        Listes.ItemsSource = new List<Student>(){studens};
+        using var db = new PostgresContext();
+        var info_pers = await db.Students.Include(s => s.Lessons).ThenInclude(l => l.Instructor).FirstOrDefaultAsync(l => l.StudentId == people);
+        if (info_pers != null)
+        {
+            Listes.ItemsSource = info_pers.Lessons.ToList();
+        }
+        else
+        {
+            return;
+        }
+        
+        
+    }
+
+    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var winds = new MainWindow();
+        winds.Show();
+        this.Close();
     }
 }

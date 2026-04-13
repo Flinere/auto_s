@@ -5,6 +5,7 @@
       <map>
         <entry key="auto/MainWindow.axaml" value="auto/auto.csproj" />
         <entry key="auto/Window_Admin.axaml" value="auto/auto.csproj" />
+        <entry key="auto/Window_CreateLesson.axaml" value="auto/auto.csproj" />
         <entry key="auto/Window_instructor.axaml" value="auto/auto.csproj" />
         <entry key="auto/Window_student.axaml" value="auto/auto.csproj" />
       </map>

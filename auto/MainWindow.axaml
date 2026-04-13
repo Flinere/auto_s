@@ -5,15 +5,15 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         MinHeight="180" MinWidth="360"
         x:Class="auto.MainWindow"
-        Title="auto" FontFamily="TimesNewRoman" Background="White">
+        Title="auto" FontFamily="TimesNewRoman" Background="White" >
         <Grid  RowDefinitions="*,*,*,*,*">
                 <TextBlock Grid.Row="0" HorizontalAlignment="Center" Foreground="CornflowerBlue" FontStyle="Italic" FontSize="30" FontWeight="Bold" Text="Автошкола 'Выхухоль'"></TextBlock>
-                <TextBox Grid.Row="1" Margin="0,10,0,0" Height="20" Watermark="логин" BorderBrush="CornflowerBlue" Background="CornflowerBlue" Width="200" x:Name="Logins"></TextBox>
+                <TextBox Grid.Row="1" Margin="0,10,0,0" Height="20" Foreground="White" Watermark="логин" BorderBrush="CornflowerBlue" Background="CornflowerBlue" Width="200" x:Name="Logins"></TextBox>
                 <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBox Grid.Row="2" Margin="29,10,10,0" BorderBrush="CornflowerBlue"  PasswordChar="*"  Background="CornflowerBlue" Height="20" Width="200" Watermark="пароль" x:Name="Passwords"></TextBox>
+                <TextBox Grid.Row="2" Foreground="White" Margin="29,10,10,0" BorderBrush="CornflowerBlue"  PasswordChar="*"  Background="CornflowerBlue" Height="20" Width="200" Watermark="пароль" x:Name="Passwords"></TextBox>
                 <Button Grid.Row="2" Margin="0,10,0,0" HorizontalAlignment="Center" Background="CornflowerBlue" Height="20" Width="20" Click="Button_OnClick1"></Button>
                 </WrapPanel>
                 <TextBlock Grid.Row="2" Name="Texxer" Foreground="CornflowerBlue" HorizontalAlignment="Center"></TextBlock>
-                <Button Grid.Row="3" HorizontalAlignment="Center" Background="CornflowerBlue" VerticalAlignment="Top" Height="30" Width="60" Content="Вход" HorizontalContentAlignment="Center" Margin="0,10,0,0" Click="Button_OnClick"></Button>
+                <Button Grid.Row="3" HorizontalAlignment="Center" Background="CornflowerBlue" VerticalAlignment="Top" Height="30" Width="60" Content="Вход" HorizontalContentAlignment="Center" Margin="0,10,0,0" Click="Button_OnClick" Foreground="White"></Button>
         </Grid>
 </Window>

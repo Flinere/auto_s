@@ -171,3 +171,4 @@ C:\Users\sekibanki\RiderProjects\auto\auto\obj\Debug\net9.0\refint\auto.dll
 C:\Users\sekibanki\RiderProjects\auto\auto\obj\Debug\net9.0\auto.pdb
 C:\Users\sekibanki\RiderProjects\auto\auto\obj\Debug\net9.0\auto.genruntimeconfig.cache
 C:\Users\sekibanki\RiderProjects\auto\auto\obj\Debug\net9.0\ref\auto.dll
+C:\Users\sekibanki\RiderProjects\auto\auto\obj\Debug\net9.0\auto.sourcelink.json
