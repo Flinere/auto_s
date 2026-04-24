@@ -136,24 +136,27 @@ public partial class Window_Admin : Window
 
     private void Button_OnClick3(object? sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        var window = new window_Createstud();
+        window.ShowDialog(this);
     }
 
     private async void Button_OnClick4(object? sender, RoutedEventArgs e)
     {
-        if (Studs.SelectedItems is not ClassLibrary2.Models.Student StSel)
+        if (Studs.SelectedItem is not Student StSel) 
         {
             return;
         }
         
         using var db = new PostgresContext();
-        var dels = await db.Students.Where(s => s.StudentId == StSel.StudentId).ToListAsync();
+        var dels = await db.Students.Include(s => s.Groups).FirstOrDefaultAsync(s => s.StudentId == StSel.StudentId);
 
-        if (dels.Any())
+        if (dels != null)
         {
+            dels.Groups.Clear();
             db.Students.RemoveRange(dels);
+            await db.SaveChangesAsync();
         }
-        await db.SaveChangesAsync();
+        
         await Student();
     }
 }

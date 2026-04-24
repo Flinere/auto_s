@@ -56,6 +56,16 @@ public partial class Window_instructor : Window
         
     }
 
+    private async void Doubless(object sender, RoutedEventArgs e)
+    {
+        if (Listes.SelectedItem is Schedule selected)
+        {
+            // Передаём ScheduleId вместо LessonId
+            var window = new WindowInfo(selected.ScheduleId); 
+            await window.ShowDialog(this);
+        }
+    }
+
     private void Button_OnClick(object? sender, RoutedEventArgs e)
     {
         var winds = new MainWindow();

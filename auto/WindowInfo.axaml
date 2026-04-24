@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="auto.WindowInfo"
+        Title="WindowInfo" Background="White" xmlns:models="clr-namespace:ClassLibrary2.Models;assembly=ClassLibrary2">
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20">
+        <ListBox Name="LbStudents" Grid.Row="1" Background="White" BorderBrush="CornflowerBlue" BorderThickness="1" Padding="6">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:Student">
+                    <WrapPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="{Binding FirstName}" Width="90" Foreground="Black"/>
+                        <TextBlock Text="{Binding LastName}" Width="110" Foreground="Black"/>
+                        <TextBlock Text="{Binding Phone}" Width="130" Foreground="CornflowerBlue"/>
+                        <TextBlock Text="{Binding Email}" Width="160" Foreground="Gray"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,18,0,0">
+            <Button Content="Закрыть" Background="CornflowerBlue" Foreground="White" 
+                    Width="130" Height="36" Click="Button_OnClick"/>
+        </WrapPanel>
+    </Grid>
+</Window>

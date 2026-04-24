@@ -4,6 +4,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="auto.window_Createstud"
-        Title="window_Createstud">
-    Welcome to Avalonia!
+        Title="window_Createstud"
+        xmlns:models="clr-namespace:ClassLibrary2.Models;assembly=ClassLibrary2" Background="White">
+    <Grid RowDefinitions="Auto,*,Auto" Margin="20">
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Новый студент" 
+                   Foreground="CornflowerBlue" FontSize="18" FontWeight="Bold" 
+                   Margin="0,0,0,15" HorizontalAlignment="Center"/>
+
+        <!-- Форма -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="12">
+                
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Имя:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <TextBox Name="Firstname" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White"/>
+                </StackPanel>
+
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Фамилия:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <TextBox Name="Lastname" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White"/>
+                </StackPanel>
+
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Дата рождения:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <DatePicker Name="Birthdates" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White"/>
+                </StackPanel>
+
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Телефон:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <TextBox Name="Phone" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White"/>
+                </StackPanel>
+
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Email:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <TextBox Name="Email" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White"/>
+                </StackPanel>
+
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Группа:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <ListBox Name="Grope" Height="100" BorderBrush="CornflowerBlue" BorderThickness="1" 
+                             Background="White" SelectionMode="Single">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Group">
+                                <TextBlock Text="{Binding GroupName}" Foreground="CornflowerBlue" Margin="4"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+                
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Password:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <TextBox Name="Pasword" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White"/>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Кнопки -->
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,0" >
+            <Button Content="Сохранить" Background="CornflowerBlue" Foreground="White" 
+                    Width="120" Height="35" Click="Button_OnClick"/>
+            <Button Content="Отмена" Background="White" Foreground="CornflowerBlue" 
+                    BorderBrush="CornflowerBlue" BorderThickness="1" Width="120" Height="35" 
+                    Click="Button_OnClick2"/>
+        </WrapPanel>
+    </Grid>
 </Window>

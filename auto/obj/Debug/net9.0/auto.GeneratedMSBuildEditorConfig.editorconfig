@@ -35,6 +35,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Users/sekibanki/RiderProjects/auto/auto/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/sekibanki/RiderProjects/auto/auto/WindowInfo.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/sekibanki/RiderProjects/auto/auto/Window_Admin.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
