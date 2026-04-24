@@ -22,7 +22,7 @@
                 </Style>
             </TabControl.Styles>
             <TabItem Header="Профиль" >
-                <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" ShowGridLines="True">
+                <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*">
                     <WrapPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock  Text="Почта:" Foreground="CornflowerBlue" ></TextBlock>
                     <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Login"></TextBlock>
@@ -45,7 +45,6 @@
                         <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Группа" Width="70" Margin="0,0,10,0"> </TextBlock>
                         <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Машина" Width="100" Margin="0,0,10,0"></TextBlock>
                         <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Время урока" Width="100" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Статус" Width="100" Margin="0,0,10,0"></TextBlock>
                     </StackPanel>
                 <ListBox Name="Listes" Background="White">
                         <ListBox.ItemTemplate>
@@ -55,7 +54,6 @@
                                     <TextBlock Foreground="CornflowerBlue" Text="{Binding GroupId}" Width="70" Margin="0,0,10,0"></TextBlock>
                                     <TextBlock Foreground="CornflowerBlue" Text="{Binding Car.LicensePlate}" Width="100" Margin="0,0,10,0"></TextBlock>
                                     <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="100" Margin="0,0,10,0"></TextBlock>
-                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Status}" Width="100" Margin="0,0,10,0"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

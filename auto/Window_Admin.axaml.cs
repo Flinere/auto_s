@@ -19,19 +19,28 @@ public partial class Window_Admin : Window
 {
     private readonly ISheduleService _sheduleService;
     private readonly StudentService _studentService;
+    private readonly GroupService _groupService;
+    private readonly PostgresContext _context;
+    private readonly AdminService _adminService;
+    private readonly LessonService _lessonService;
 
     public Window_Admin()
     {
         InitializeComponent();
     }
 
-    public Window_Admin(int pers, ISheduleService sheduleService,  StudentService studentService)
+    public Window_Admin(int pers, ISheduleService sheduleService,  StudentService studentService,  GroupService groupService) 
     {
         InitializeComponent();
         _sheduleService = sheduleService;
         _studentService = studentService;
+        _context = new PostgresContext();
+        _adminService  = new AdminService(_context);
+        _lessonService = new LessonService(_context);
+        
         Lises();
         Student();
+        adm(pers);
     }
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)
@@ -40,12 +49,17 @@ public partial class Window_Admin : Window
         wind.Show();
         this.Close();
     }
+    private async Task adm(int pers)
+    {
+        var admin = await _adminService.GetByIdAsync(pers);
+        Admins.Text = admin.Username;
+    }
 
     private async Task Lises()
     {
 
+       
         var als = await _sheduleService.GetAllAsync();
-        Console.WriteLine(als.Count);
         try
         {
             if (als != null)
@@ -88,12 +102,36 @@ public partial class Window_Admin : Window
     private void Button_OnClick1(object? sender, RoutedEventArgs e)
     {
         var window = new Window_CreateLesson();
-        ShowDialog(window);
+        window.ShowDialog(this);
     }
 
-    private void Button_OnClick2(object? sender, RoutedEventArgs e)
+    private async void Button_OnClick2(object? sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        if (Lisen.SelectedItem is not Schedule sh)
+        {
+            return;
+        }
+
+        using var db = new PostgresContext();
+        var lessonsToDelete = await db.Lessons
+            .Where(l => l.GroupId == sh.GroupId && l.LessonDate == sh.ScheduledDate)
+            .ToListAsync();
+
+        if (lessonsToDelete.Any())
+        {
+            db.Lessons.RemoveRange(lessonsToDelete);
+        }
+        var scheduleInDb = await db.Schedules.FindAsync(sh.ScheduleId);
+            
+        if (scheduleInDb != null)
+        {
+            db.Schedules.Remove(scheduleInDb);
+        }
+        
+        await db.SaveChangesAsync();
+        
+        await Lises();
+
     }
 
     private void Button_OnClick3(object? sender, RoutedEventArgs e)
@@ -101,8 +139,21 @@ public partial class Window_Admin : Window
         throw new NotImplementedException();
     }
 
-    private void Button_OnClick4(object? sender, RoutedEventArgs e)
+    private async void Button_OnClick4(object? sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        if (Studs.SelectedItems is not ClassLibrary2.Models.Student StSel)
+        {
+            return;
+        }
+        
+        using var db = new PostgresContext();
+        var dels = await db.Students.Where(s => s.StudentId == StSel.StudentId).ToListAsync();
+
+        if (dels.Any())
+        {
+            db.Students.RemoveRange(dels);
+        }
+        await db.SaveChangesAsync();
+        await Student();
     }
 }

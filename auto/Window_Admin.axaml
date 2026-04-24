@@ -8,46 +8,61 @@
         xmlns:models="clr-namespace:ClassLibrary2.Models;assembly=ClassLibrary2"
         Background="White"
         >
-    <Grid RowDefinitions="*,*" ColumnDefinitions="*,*" >
-       <Button Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Выйти" Background="CornflowerBlue" Foreground="White" Click="Button_OnClick"></Button>
-        <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Обновить" Background="CornflowerBlue" Foreground="White" Click="Refresh"></Button>
-
-        <WrapPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <TextBlock Text="Уроки" Foreground="CornflowerBlue" Margin="0,5,10,0"></TextBlock>
-            <Button Content="Создать" Background="CornflowerBlue" Foreground="White" Margin="0,0,10,0" Click="Button_OnClick1"></Button>
-            <Button Content="Удалить" Background="CornflowerBlue" Foreground="White" Click="Button_OnClick2"></Button>
-        </WrapPanel>
-        <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <TextBlock Text="студенты" Foreground="CornflowerBlue" Margin="0,5,10,0"></TextBlock>
-            <Button Content="Создать" Background="CornflowerBlue" Foreground="White" Margin="0,0,10,0" Click="Button_OnClick3"></Button>
-            <Button Content="Удалить" Background="CornflowerBlue" Foreground="White" Click="Button_OnClick4"></Button>
-        </WrapPanel>
+   <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="*,*" Margin="15">
+    <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         
-        <ListBox Grid.Column="0" Grid.Row="1" Background="White" BorderBrush="CornflowerBlue" BorderThickness="1" Name="Lisen">
-            <ListBox.ItemTemplate>
-                <DataTemplate x:DataType="models:Schedule">
-                    <WrapPanel Orientation="Horizontal">
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding ScheduledDate}" Width="200" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding GroupId}" Width="70" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding Car.LicensePlate}" Width="100" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="100" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding Status}" Width="100" Margin="0,0,10,0"></TextBlock>
-                    </WrapPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <ListBox Grid.Row="1" Grid.Column="1" Background="White" BorderBrush="CornflowerBlue" BorderThickness="1" Name="Studs">
-            <ListBox.DataTemplates>
-                <DataTemplate x:DataType="models:Student">
-                    <WrapPanel Orientation="Horizontal">
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding FirstName}" Width="70" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding  LastName}" Width="70" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding   GroupDisplayNames}" Width="100" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding  Phone}" Width="100" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock Foreground="CornflowerBlue" Text="{Binding  RegistrationDate}" Width="100" Margin="0,0,10,0"></TextBlock>
-                    </WrapPanel>
-                </DataTemplate>
-            </ListBox.DataTemplates>
-        </ListBox>
+        <TextBlock Grid.Column="0" Text="Автошкола «Выхухоль»" Foreground="CornflowerBlue" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+        <StackPanel Grid.Column="1">
+            <TextBlock  Text="Админ:" Foreground="CornflowerBlue" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Name="Admins" Foreground="CornflowerBlue" FontSize="14" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        
     </Grid>
+       
+    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,0,0,8">
+        <Button Content="Выйти" Background="CornflowerBlue" Foreground="White" Padding="12,6" Margin="0,0,20,0" Click="Button_OnClick"/>
+        <TextBlock Text="Уроки" Foreground="CornflowerBlue" FontWeight="Medium" VerticalAlignment="Center" Margin="0,0,10,0"/>
+        <Button Content="Создать" Background="CornflowerBlue" Foreground="White" Padding="12,6" Margin="0,0,5,0" Click="Button_OnClick1"/>
+        <Button Content="Удалить" Background="CornflowerBlue" Foreground="White" Padding="12,6" Click="Button_OnClick2"/>
+    </StackPanel>
+       
+    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,8">
+        <TextBlock Text="Студенты" Foreground="CornflowerBlue" FontWeight="Medium" VerticalAlignment="Center" Margin="0,0,10,0"/>
+        <Button Content="Создать" Background="CornflowerBlue" Foreground="White" Padding="12,6" Margin="0,0,5,0" Click="Button_OnClick3"/>
+        <Button Content="Удалить" Background="CornflowerBlue" Foreground="White" Padding="12,6" Margin="0,0,20,0" Click="Button_OnClick4"/>
+        <Button Content="Обновить" Background="CornflowerBlue" Foreground="White" Padding="12,6" Click="Refresh"/>
+    </StackPanel>
+       
+    <ListBox Grid.Row="2" Grid.Column="0" Name="Lisen" Background="White" BorderBrush="CornflowerBlue" BorderThickness="1" Padding="8">
+        <ListBox.ItemTemplate>
+            <DataTemplate x:DataType="models:Schedule">
+                <WrapPanel Orientation="Horizontal" Margin="0,2">
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding ScheduledDate}" Width="180" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding GroupId}" Width="60" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Car.LicensePlate}" Width="100" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="80" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Status}" Width="90"/>
+                </WrapPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+       
+    <ListBox Grid.Row="2" Grid.Column="1" Name="Studs" Background="White" BorderBrush="CornflowerBlue" BorderThickness="1" Padding="8" Margin="15,0,0,0">
+        <ListBox.DataTemplates>
+            <DataTemplate x:DataType="models:Student">
+                <WrapPanel Orientation="Horizontal" Margin="0,2">
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding FirstName}" Width="80" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding LastName}" Width="80" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding GroupDisplayNames}" Width="110" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Phone}" Width="110" Margin="0,0,10,0"/>
+                    <TextBlock Foreground="CornflowerBlue" Text="{Binding RegistrationDate}" Width="120"/>
+                </WrapPanel>
+            </DataTemplate>
+        </ListBox.DataTemplates>
+    </ListBox>
+</Grid>
 </Window>

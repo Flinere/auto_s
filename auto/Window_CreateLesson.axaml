@@ -4,6 +4,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="auto.Window_CreateLesson"
-        Title="Window_CreateLesson">
-    Welcome to Avalonia!
+        Title="Window_CreateLesson"
+        xmlns:models="clr-namespace:ClassLibrary2.Models;assembly=ClassLibrary2" Background="White">
+        <Grid RowDefinitions="Auto,*,Auto" Margin="20">
+        <TextBlock Grid.Row="0" Text="Новый урок" Foreground="CornflowerBlue" FontSize="18" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+        
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Orientation="Vertical" Spacing="15">
+                
+                <StackPanel Orientation="Vertical" Spacing="5">
+                    <TextBlock Text="Дата проведения:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <DatePicker Name="Date" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White" Foreground="CornflowerBlue"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Spacing="5">
+                    <TextBlock Text="Время начала:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <TimePicker Name="Time" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White" Foreground="CornflowerBlue"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Spacing="5">
+                    <TextBlock Text="Группа:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <ComboBox Name="Group" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White" Foreground="CornflowerBlue">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Group">
+                                <TextBlock Text="{Binding GroupName}" Foreground="CornflowerBlue"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Spacing="5">
+                    <TextBlock Text="Автомобиль:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <ComboBox Name="Cars" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White" Foreground="CornflowerBlue">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Car">
+                                <TextBlock Text="{Binding   LicensePlate}" Foreground="CornflowerBlue"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Spacing="5">
+                    <TextBlock Text="Длительность (минут):" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <NumericUpDown Name="Dura" Minimum="30" Maximum="300" Increment="30" BorderBrush="CornflowerBlue"  BorderThickness="1" Background="White" Value="60" Foreground="CornflowerBlue"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Spacing="5">
+                    <TextBlock Text="Инструктор:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <ComboBox Name="Instructor" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White" Foreground="CornflowerBlue">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Instructor">
+                                <TextBlock Text="{Binding LastName}" Foreground="CornflowerBlue"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Spacing="5">
+                    <TextBlock Text="Статус:" Foreground="CornflowerBlue" FontWeight="Medium"/>
+                    <ComboBox Name="Status" BorderBrush="CornflowerBlue" BorderThickness="1" Background="White" Foreground="CornflowerBlue">
+                        <ComboBoxItem Content="scheduled" IsSelected="True"/>
+                        <ComboBoxItem Content="completed"/>
+                        <ComboBoxItem Content="cancelled"/>
+                    </ComboBox>
+                </StackPanel>
+                
+            </StackPanel>
+        </ScrollViewer>
+        
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center"  Margin="0,30,0,0">
+            <Button Content="Сохранить" Background="CornflowerBlue" Foreground="White" Width="120" Height="35" Click="Button_OnClick"/>
+            <Button Content="Отмена" Background="White" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" Width="120" Height="35" Click="Button_OnClick1"/>
+        </WrapPanel>
+    </Grid>
 </Window>

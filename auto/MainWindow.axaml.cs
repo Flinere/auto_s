@@ -20,6 +20,7 @@ public partial class MainWindow : Window
     private readonly InstructorService  _instructorService;
     private readonly ScheduleService  _scheduleService;
     private readonly LessonService  _lessonService;
+    private readonly GroupService  _groupService;
     public MainWindow()
     {
         InitializeComponent();
@@ -30,6 +31,7 @@ public partial class MainWindow : Window
         _instructorService = new InstructorService(_context);
         _scheduleService = new ScheduleService(_context);
         _lessonService = new LessonService(_context);
+        _groupService = new GroupService(_context);
     }
 
     private async void Button_OnClick(object? sender, RoutedEventArgs e)
@@ -44,7 +46,7 @@ public partial class MainWindow : Window
                 var admin = await _adminService.AuthenticateAsync(Login, Password);
                 if (admin != null)
                 {
-                    var winds = new Window_Admin(admin.AdminId, _scheduleService, _studentService);
+                    var winds = new Window_Admin(admin.AdminId, _scheduleService, _studentService, _groupService);
                     winds.Show();
                     this.Close();
                 }

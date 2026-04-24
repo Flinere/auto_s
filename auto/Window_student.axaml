@@ -23,7 +23,7 @@
                 </Style>
             </TabControl.Styles>
             <TabItem Header="Профиль" >
-                <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" ShowGridLines="True">
+                <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*">
                     <WrapPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock  Text="Почта:" Foreground="CornflowerBlue" ></TextBlock>
                     <TextBlock  Foreground="CornflowerBlue" FontWeight="Bold" x:Name="Login"></TextBlock>
@@ -49,7 +49,6 @@
                         <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Дата" Width="200" Margin="0,0,10,0"></TextBlock>
                         <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Имя инструктора" Width="180" Margin="0,0,10,0"> </TextBlock>
                         <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Время" Width="70" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Тип урока" Width="100" Margin="0,0,10,0"></TextBlock>
                         <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Статус" Width="100" Margin="0,0,10,0"></TextBlock>
                     </StackPanel>
                     
