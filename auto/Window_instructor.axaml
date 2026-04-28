@@ -41,19 +41,31 @@
             <TabItem Header="Занятия">
                 <StackPanel Margin="10">
                     <StackPanel Orientation="Horizontal" Background="White" Margin="0,0,10,0">
-                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Дата" Width="200" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Группа" Width="70" Margin="0,0,10,0"> </TextBlock>
-                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Машина" Width="100" Margin="0,0,10,0"></TextBlock>
-                        <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Время урока" Width="100" Margin="0,0,10,0"></TextBlock>
+                        <Border Tapped="Border_Data" Tag="datas">
+                            <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Дата" Width="160" Margin="0,0,10,0"></TextBlock>
+                        </Border>
+                        <Border Tag="grup" Tapped="Border_Data">
+                            <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Группа" Width="70" Margin="0,0,10,0"> </TextBlock>
+                        </Border>
+                        <Border Tapped="Border_Data" Tag="cares">
+                            <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Машина" Width="150" Margin="0,0,10,0"></TextBlock>
+                        </Border>
+                        <Border Tapped="Border_Data" Tag="durrat">
+                            <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Время урока" Width="140" Margin="0,0,10,0"></TextBlock>
+                        </Border>
+                        <Border Tapped="Border_Data" Tag="statts">
+                            <TextBlock FontWeight="Bold" Foreground="CornflowerBlue" Text="Статус" Width="100" Margin="0,0,10,0"></TextBlock>
+                        </Border>
                     </StackPanel>
                 <ListBox Name="Listes" Background="White" DoubleTapped="Doubless">
                         <ListBox.ItemTemplate>
                             <DataTemplate x:DataType="models:Schedule">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding ScheduledDate}" Width="200" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding ScheduledDate}" Width="160" Margin="0,0,10,0"></TextBlock>
                                     <TextBlock Foreground="CornflowerBlue" Text="{Binding GroupId}" Width="70" Margin="0,0,10,0"></TextBlock>
-                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Car.LicensePlate}" Width="100" Margin="0,0,10,0"></TextBlock>
-                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="100" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Car.LicensePlate}" Width="150" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding DurationMinutes}" Width="140" Margin="0,0,10,0"></TextBlock>
+                                    <TextBlock Foreground="CornflowerBlue" Text="{Binding Status}" Width="100"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

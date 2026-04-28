@@ -63,7 +63,8 @@ public partial class Window_CreateLesson : Window
                 CarId = selectedCar.CarId,
                 GroupId = selectedGroup.GroupId,
                 ScheduledDate = lessonDate,
-                DurationMinutes = duration
+                DurationMinutes = duration,
+                Status = status
             };
         
             await bd.Schedules.AddAsync(schedule);
