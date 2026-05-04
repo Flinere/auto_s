@@ -65,7 +65,6 @@ public partial class Window_instructor : Window
     {
         if (Listes.SelectedItem is Schedule selected)
         {
-            // Передаём ScheduleId вместо LessonId
             var window = new WindowInfo(selected.ScheduleId); 
             await window.ShowDialog(this);
         }
